@@ -5,16 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
-
 class Bookstore extends StatefulWidget {
   @override
   _BookstoreState createState() => _BookstoreState();
 }
 
 class _BookstoreState extends State<Bookstore> {
-
   List<Filter> filters = getFilterList();
   late Filter selectedFilter;
 
@@ -46,19 +42,21 @@ class _BookstoreState extends State<Bookstore> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 16,),
+            padding: EdgeInsets.only(
+              right: 16,
+            ),
             child: Icon(
               Icons.search,
               color: Colors.grey[400],
               size: 28,
             ),
           ),
-        ], systemOverlayStyle: SystemUiOverlayStyle.dark,
+        ],
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Container(
             padding: EdgeInsets.only(top: 16, left: 16, right: 16),
             decoration: BoxDecoration(
@@ -78,7 +76,6 @@ class _BookstoreState extends State<Bookstore> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 Text(
                   "Discover books",
                   style: GoogleFonts.catamaran(
@@ -92,18 +89,16 @@ class _BookstoreState extends State<Bookstore> {
                   height: 16,
                 ),
 
-                Padding(
-                  padding: EdgeInsets.only(right: 75),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: buildFilters(),
-                  ),
-                ),
-
+                // Padding(
+                //   padding: EdgeInsets.only(right: 75),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: buildFilters(),
+                //   ),
+                // ),
               ],
             ),
           ),
-
           Expanded(
             child: Container(
               child: ListView(
@@ -113,7 +108,6 @@ class _BookstoreState extends State<Bookstore> {
               ),
             ),
           ),
-
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -123,13 +117,11 @@ class _BookstoreState extends State<Bookstore> {
             ),
             child: Column(
               children: [
-                
                 Padding(
                   padding: EdgeInsets.all(16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       Text(
                         "Authors to follow",
                         style: TextStyle(
@@ -138,36 +130,29 @@ class _BookstoreState extends State<Bookstore> {
                           color: Colors.black,
                         ),
                       ),
-
-                      Row(
-                        children: [
-
-                          Text(
-                            "Show all",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: kPrimaryColor,
-                            ),
-                          ),
-
-                          SizedBox(
-                            width: 8,
-                          ),
-
-                          Icon(
-                            Icons.arrow_forward,
-                            size: 18,
-                            color: kPrimaryColor,
-                          ),
-
-                        ],
-                      ),
-
+                      // Row(
+                      //   children: [
+                      //     Text(
+                      //       "Show all",
+                      //       style: TextStyle(
+                      //         fontSize: 18,
+                      //         fontWeight: FontWeight.bold,
+                      //         color: kPrimaryColor,
+                      //       ),
+                      //     ),
+                      //     SizedBox(
+                      //       width: 8,
+                      //     ),
+                      //     Icon(
+                      //       Icons.arrow_forward,
+                      //       size: 18,
+                      //       color: kPrimaryColor,
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),
-
                 Container(
                   height: 100,
                   margin: EdgeInsets.only(bottom: 16),
@@ -177,11 +162,9 @@ class _BookstoreState extends State<Bookstore> {
                     children: buildAuthors(),
                   ),
                 ),
-
               ],
             ),
           ),
-
         ],
       ),
       bottomNavigationBar: Container(
@@ -209,7 +192,7 @@ class _BookstoreState extends State<Bookstore> {
     );
   }
 
-  List<Widget> buildFilters(){
+  List<Widget> buildFilters() {
     List<Widget> list = [];
     for (var i = 0; i < filters.length; i++) {
       list.add(buildFilter(filters[i]));
@@ -217,7 +200,7 @@ class _BookstoreState extends State<Bookstore> {
     return list;
   }
 
-  Widget buildFilter(Filter item){
+  Widget buildFilter(Filter item) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -228,35 +211,34 @@ class _BookstoreState extends State<Bookstore> {
         height: 50,
         child: Stack(
           children: <Widget>[
-
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
                 width: 30,
                 height: 3,
-                color: selectedFilter == item ? kPrimaryColor : Colors.transparent,
+                color:
+                    selectedFilter == item ? kPrimaryColor : Colors.transparent,
               ),
             ),
-
             Center(
               child: Text(
                 item.name,
                 style: GoogleFonts.catamaran(
-                  color: selectedFilter == item ? kPrimaryColor : Colors.grey[400],
+                  color:
+                      selectedFilter == item ? kPrimaryColor : Colors.grey[400],
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 3,
                 ),
               ),
             )
-
           ],
         ),
       ),
     );
   }
 
-  List<Widget> buildBooks(){
+  List<Widget> buildBooks() {
     List<Widget> list = [];
     for (var i = 0; i < books.length; i++) {
       list.add(buildBook(books[i], i));
@@ -264,7 +246,7 @@ class _BookstoreState extends State<Bookstore> {
     return list;
   }
 
-  Widget buildBook(Book book, int index){
+  Widget buildBook(Book book, int index) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -273,12 +255,12 @@ class _BookstoreState extends State<Bookstore> {
         );
       },
       child: Container(
-        margin: EdgeInsets.only(right: 32, left: index == 0 ? 16 : 0, bottom: 8),
+        margin:
+            EdgeInsets.only(right: 32, left: index == 0 ? 16 : 0, bottom: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -291,7 +273,10 @@ class _BookstoreState extends State<Bookstore> {
                     ),
                   ],
                 ),
-                margin: EdgeInsets.only(bottom: 16, top: 24,),
+                margin: EdgeInsets.only(
+                  bottom: 16,
+                  top: 24,
+                ),
                 child: Hero(
                   tag: book.title,
                   child: Image.asset(
@@ -301,7 +286,6 @@ class _BookstoreState extends State<Bookstore> {
                 ),
               ),
             ),
-
             Text(
               book.title,
               style: GoogleFonts.catamaran(
@@ -309,7 +293,6 @@ class _BookstoreState extends State<Bookstore> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             Text(
               book.author.fullname,
               style: TextStyle(
@@ -318,14 +301,13 @@ class _BookstoreState extends State<Bookstore> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 
-  List<Widget> buildAuthors(){
+  List<Widget> buildAuthors() {
     List<Widget> list = [];
     for (var i = 0; i < authors.length; i++) {
       list.add(buildAuthor(authors[i], i));
@@ -333,7 +315,7 @@ class _BookstoreState extends State<Bookstore> {
     return list;
   }
 
-  Widget buildAuthor(Author author, int index){
+  Widget buildAuthor(Author author, int index) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[200],
@@ -343,11 +325,10 @@ class _BookstoreState extends State<Bookstore> {
       ),
       padding: EdgeInsets.all(12),
       margin: EdgeInsets.only(right: 16, left: index == 0 ? 16 : 0),
-      width: 255,
+      width: 260,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-
           Card(
             elevation: 4,
             margin: EdgeInsets.all(0),
@@ -362,22 +343,19 @@ class _BookstoreState extends State<Bookstore> {
               height: 75,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(author.image), 
+                  image: AssetImage(author.image),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-
           SizedBox(
             width: 12,
           ),
-
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Text(
                 author.fullname,
                 style: GoogleFonts.catamaran(
@@ -385,20 +363,16 @@ class _BookstoreState extends State<Bookstore> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
               Row(
                 children: [
-
                   Icon(
                     Icons.library_books,
                     color: Colors.grey,
                     size: 14,
                   ),
-
                   SizedBox(
                     width: 8,
                   ),
-                  
                   Text(
                     author.books.toString() + " books",
                     style: TextStyle(
@@ -407,19 +381,16 @@ class _BookstoreState extends State<Bookstore> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                 ],
               ),
-
             ],
           ),
-
         ],
       ),
     );
   }
 
-  List<Widget> buildNavigationItems(){
+  List<Widget> buildNavigationItems() {
     List<Widget> list = [];
     for (var navigationItem in navigationItems) {
       list.add(buildNavigationItem(navigationItem));
@@ -427,7 +398,7 @@ class _BookstoreState extends State<Bookstore> {
     return list;
   }
 
-  Widget buildNavigationItem(NavigationItem item){
+  Widget buildNavigationItem(NavigationItem item) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -446,5 +417,4 @@ class _BookstoreState extends State<Bookstore> {
       ),
     );
   }
-
 }

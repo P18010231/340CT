@@ -4,56 +4,79 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookDetail extends StatelessWidget {
-
   final Book book;
 
   BookDetail({required this.book});
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
-    
+
     return Scaffold(
       body: Stack(
         children: [
-
           Container(
             child: Hero(
               tag: book.title,
-              child: Image.asset(
-                book.image,
-                fit: BoxFit.fitWidth
-              ),
+              child: Image.asset(book.image, fit: BoxFit.fitWidth),
             ),
           ),
-
           Padding(
-            padding: EdgeInsets.only(top: 48, left: 32,),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  height: 42,
-                  width: 42,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: kPrimaryColor,
+            padding: EdgeInsets.only(
+              top: 48,
+              left: 32,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      height: 42,
+                      width: 42,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: kPrimaryColor,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 25.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: 42,
+                        width: 42,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.star_border_outlined,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -68,14 +91,16 @@ class BookDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(right: 32, left: 32, bottom: 16,),
+                      padding: EdgeInsets.only(
+                        right: 32,
+                        left: 32,
+                        bottom: 16,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-
                           Text(
                             book.title,
                             style: GoogleFonts.catamaran(
@@ -94,39 +119,39 @@ class BookDetail extends StatelessWidget {
                             ),
                           ),
 
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8),
-                            child: Row(
-                              children: [
+                          // Padding(
+                          //   padding: EdgeInsets.symmetric(vertical: 8),
+                          //   child: Row(
+                          //     children: [
 
-                                Row(
-                                  children: <Widget>[
+                          //       Row(
+                          //         children: <Widget>[
 
-                                    Icon(Icons.star, size: 20, color: kStarsColor,),
-                                    Icon(Icons.star, size: 20, color: kStarsColor,),
-                                    Icon(Icons.star, size: 20, color: kStarsColor,),
-                                    Icon(Icons.star, size: 20, color: kStarsColor,),
-                                    Icon(Icons.star_half, size: 20, color: kStarsColor,),
+                          //           Icon(Icons.star, size: 20, color: kStarsColor,),
+                          //           Icon(Icons.star, size: 20, color: kStarsColor,),
+                          //           Icon(Icons.star, size: 20, color: kStarsColor,),
+                          //           Icon(Icons.star, size: 20, color: kStarsColor,),
+                          //           Icon(Icons.star_half, size: 20, color: kStarsColor,),
 
-                                  ],
-                                ),
+                          //         ],
+                          //       ),
 
-                                SizedBox(
-                                  width: 12,
-                                ),
+                          //       SizedBox(
+                          //         width: 12,
+                          //       ),
 
-                                Text(
-                                  book.score,
-                                  style: GoogleFonts.catamaran(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                          //       Text(
+                          //         book.score,
+                          //         style: GoogleFonts.catamaran(
+                          //           fontSize: 16,
+                          //           color: Colors.grey,
+                          //           fontWeight: FontWeight.bold,
+                          //         ),
+                          //       ),
 
-                              ],
-                            ),
-                          ),
+                          //     ],
+                          //   ),
+                          // ),
 
                           Expanded(
                             child: SingleChildScrollView(
@@ -139,16 +164,19 @@ class BookDetail extends StatelessWidget {
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ),
                   ),
-
                   Container(
                     height: 100,
                     width: size.width,
-                    padding: EdgeInsets.only(top: 16, left: 32, right: 32, bottom: 32,),
+                    padding: EdgeInsets.only(
+                      top: 16,
+                      left: 32,
+                      right: 32,
+                      bottom: 32,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -159,7 +187,6 @@ class BookDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-
                         Container(
                           width: size.width / 2 - 44,
                           decoration: BoxDecoration(
@@ -181,7 +208,7 @@ class BookDetail extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Want to read",
+                                  "RM20",
                                   style: GoogleFonts.catamaran(
                                     fontSize: 18,
                                     color: Colors.white,
@@ -191,15 +218,14 @@ class BookDetail extends StatelessWidget {
                                 SizedBox(
                                   width: 8,
                                 ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  color: Colors.white,
-                                ),
+                                // Icon(
+                                //   Icons.keyboard_arrow_down,
+                                //   color: Colors.white,
+                                // ),
                               ],
                             ),
                           ),
                         ),
-
                         Container(
                           width: size.width / 2 - 44,
                           decoration: BoxDecoration(
@@ -244,20 +270,18 @@ class BookDetail extends StatelessWidget {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
-
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: 32, bottom: (size.height * 0.5) - (75 / 2)),
+              padding: EdgeInsets.only(
+                  left: 32, bottom: (size.height * 0.5) - (75 / 2)),
               child: Card(
                 elevation: 4,
                 margin: EdgeInsets.all(0),
@@ -272,7 +296,7 @@ class BookDetail extends StatelessWidget {
                   height: 75,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(book.author.image), 
+                      image: AssetImage(book.author.image),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -280,7 +304,6 @@ class BookDetail extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
     );
