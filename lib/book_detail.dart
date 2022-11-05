@@ -309,3 +309,4 @@ class BookDetail extends StatelessWidget {
     );
   }
 }
+
