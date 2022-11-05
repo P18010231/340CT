@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:bookstoreapp/Screens/Welcome/welcome_screen.dart';
 import 'package:bookstoreapp/constants.dart';
 
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
