@@ -276,7 +276,11 @@ class BookDetail extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Cart()));
+                                    builder: (context) => Cart(
+                                        book.price,
+                                        book.quantity,
+                                        book.image,
+                                        book.title)));
                           },
                         )
                       ],
@@ -318,4 +322,3 @@ class BookDetail extends StatelessWidget {
     );
   }
 }
-
