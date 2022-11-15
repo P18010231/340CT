@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'components/custom_bottom_nav_bar.dart';
+import 'enums.dart';
+
 class Bookstore extends StatefulWidget {
+  static var routeName;
+
   @override
   _BookstoreState createState() => _BookstoreState();
 }
@@ -167,28 +172,8 @@ class _BookstoreState extends State<Bookstore> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 70,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 8,
-              blurRadius: 12,
-              offset: Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: buildNavigationItems(),
-        ),
-      ),
+      bottomNavigationBar:
+          const CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 

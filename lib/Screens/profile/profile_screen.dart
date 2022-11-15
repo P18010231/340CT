@@ -1,20 +1,23 @@
+import 'package:bookstoreapp/components/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'components/custom_bottom_nav_bar.dart';
-import 'constants.dart';
-import 'enums.dart';
+import '../../constants.dart';
+import '../../enums.dart';
+import 'components/body.dart';
 
-class Wishlist extends StatefulWidget {
-  const Wishlist({super.key});
+class ProfileScreen extends StatefulWidget {
+  static var routeName;
+
+  const ProfileScreen({super.key});
 
   @override
-  State<Wishlist> createState() => _wishlistState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _wishlistState extends State<Wishlist> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +43,7 @@ class _wishlistState extends State<Wishlist> {
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
+      body: Body(),
       bottomNavigationBar:
           const CustomBottomNavBar(selectedMenu: MenuState.home),
     );

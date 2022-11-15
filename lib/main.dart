@@ -39,7 +39,9 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: const WelcomeScreen(),
+      home: Bookstore(),
+      //const WelcomeScreen(),
+      //Bookstore(),
     );
   }
 }
